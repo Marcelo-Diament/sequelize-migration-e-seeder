@@ -105,3 +105,25 @@ module.exports = router;
   </body>
 </html>
 ```
+
+## Banco de Dados
+
+15. Ativar xampp > MySQL
+
+16. Abrir Workbench e criar BD `sequelize_03_todo`:
+
+```sql
+CREATE DATABASE sequelize_03_todo;
+```
+
+17. `./server/.sequelizerc`:
+
+```js
+const path = require('path')
+module.exports = {
+    config: path.resolve('./database/config', 'config.js'),
+    'models-path': path.resolve('./database/models'),
+    'seeders-path': path.resolve('./database/seeders'),
+    'migrations-path': path.resolve('./database/migrations'),
+}
+```
