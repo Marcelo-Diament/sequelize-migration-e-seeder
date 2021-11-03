@@ -127,3 +127,35 @@ module.exports = {
     'migrations-path': path.resolve('./database/migrations'),
 }
 ```
+
+18. `npx sequelize init`
+
+19. `./server/database/config.js`:
+
+```js
+module.exports = {
+    "development": {
+        "username": "root",
+        "password": null,
+        "database": "sequelize_03_todo",
+        "host": "127.0.0.1",
+        "dialect": "mysql"
+    },
+    "test": {
+        "username": "root",
+        "password": null,
+        "database": "sequelize_03_todo",
+        "host": "127.0.0.1",
+        "dialect": "mysql"
+    },
+    "production": {
+        "username": "root",
+        "password": null,
+        "database": "sequelize_03_todo",
+        "host": "127.0.0.1",
+        "dialect": "mysql"
+    }
+}
+```
+
+## Models e Migrations
