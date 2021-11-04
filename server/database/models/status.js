@@ -10,13 +10,16 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // define association here
+      Status.hasMany(models.Todo, {
+        as: 'todos'
+      })
     }
   };
   Status.init({
     title: DataTypes.STRING
   }, {
     sequelize,
+    timestamps: true,
     modelName: 'Status',
   });
   return Status;

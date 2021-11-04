@@ -6,17 +6,23 @@ module.exports = {
       {
         firstName: 'Fulano',
         lastName: 'de Tal',
-        email: 'fulano@detal.com'
+        email: 'fulano@detal.com',
+        createdAt: new Date(),
+        updatedAt: new Date()
       },
       {
         firstName: 'Ciclano',
         lastName: 'de Tal',
-        email: 'ciclano@detal.com'
+        email: 'ciclano@detal.com',
+        createdAt: new Date(),
+        updatedAt: new Date()
       },
       {
         firstName: 'Beltrano',
         lastName: 'da Silva',
-        email: 'beltrano@dasilva.com'
+        email: 'beltrano@dasilva.com',
+        createdAt: new Date(),
+        updatedAt: new Date()
       }
     ])
   },
