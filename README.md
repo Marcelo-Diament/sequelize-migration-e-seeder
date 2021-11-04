@@ -187,3 +187,114 @@ SELECT * FROM todos;
 DESCRIBE statuses;
 SELECT * FROM statuses;
 ```
+
+
+## Seeders
+
+25. `npx sequelize-cli seed:generate --name demo-users`
+
+26. `./server/database/seeders/{AAAAMMDDHHMMSS}-demo-users.js`:
+
+```js
+'use strict';
+
+module.exports = {
+    up: async (queryInterface, Sequelize) => {
+        await queryInterface.bulkInsert('Users', [{
+                firstName: 'Fulano',
+                lastName: 'de Tal',
+                email: 'fulano@detal.com'
+            },
+            {
+                firstName: 'Ciclano',
+                lastName: 'de Tal',
+                email: 'ciclano@detal.com'
+            },
+            {
+                firstName: 'Beltrano',
+                lastName: 'da Silva',
+                email: 'beltrano@dasilva.com'
+            }
+        ], {});
+    },
+
+    down: async (queryInterface, Sequelize) => {
+        await queryInterface.bulkDelete('Users', null, {});
+    }
+};
+```
+
+
+27. `npx sequelize-cli seed:generate --name demo-todos`
+
+28. `./server/database/seeders/{AAAAMMDDHHMMSS}-demo-todos.js`:
+
+```js
+'use strict';
+
+module.exports = {
+    up: async (queryInterface, Sequelize) => {
+        await queryInterface.bulkInsert('Todos', [{
+                title: 'To Do 01',
+                excerpt: 'Resumo do To Do 01',
+                description: 'Descrição completa do To Do 01'
+            },
+            {
+                title: 'To Do 02',
+                excerpt: 'Resumo do To Do 02',
+                description: 'Descrição completa do To Do 02'
+            },
+            {
+                title: 'To Do 03',
+                excerpt: 'Resumo do To Do 03',
+                description: 'Descrição completa do To Do 03'
+            }
+        ], {});
+    },
+
+    down: async (queryInterface, Sequelize) => {
+        await queryInterface.bulkDelete('Todos', null, {});
+    }
+};
+```
+
+29. `npx sequelize-cli seed:generate --name demo-statuses`
+
+30. `./server/database/seeders/{AAAAMMDDHHMMSS}-demo-statuses.js`:
+
+```js
+'use strict';
+
+module.exports = {
+    up: async (queryInterface, Sequelize) => {
+        await queryInterface.bulkInsert('Statuses', [{
+                title: '01- A Desenvolver'
+            },
+            {
+                title: '02 - Em Desenvolvimento'
+            },
+            {
+                title: '03 - A Validar'
+            },
+            {
+                title: '04 - Em Validação'
+            },
+            {
+                title: '05 - Validado'
+            },
+            {
+                title: '06 - A Ajustar'
+            },
+            {
+                title: '07 - Finalizado'
+            }
+        ], {});
+    },
+
+    down: async (queryInterface, Sequelize) => {
+        await queryInterface.bulkDelete('Statuses', null, {});
+    }
+};
+```
+
+31. `npx sequelize-cli db:seed:all`
