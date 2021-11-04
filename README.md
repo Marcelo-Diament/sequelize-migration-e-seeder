@@ -159,3 +159,31 @@ module.exports = {
 ```
 
 ## Models e Migrations
+
+
+20. `npx sequelize-cli model:generate --name User --attributes firstName:string,lastName:string,email:string`
+
+21. `npx sequelize-cli model:generate --name Status --attributes title:string`
+
+22. `npx sequelize-cli model:generate --name Todo --attributes title:string,excerpt:string,description:string`
+
+23. `npx sequelize-cli db:migrate`
+
+24. Abrir Workbench - repare que há as tabelas `users`, `todos`,  `statuses` e `sequelizemeta`.
+
+```sql
+-- CREATE DATABASE sequelize_03_todo;
+USE sequelize_03_todo;
+
+DESCRIBE sequelizemeta;
+SELECT * FROM sequelizemeta;
+
+DESCRIBE users;
+SELECT * FROM users;
+
+DESCRIBE todos;
+SELECT * FROM todos;
+
+DESCRIBE statuses;
+SELECT * FROM statuses;
+```
