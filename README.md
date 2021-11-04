@@ -771,3 +771,47 @@ module.exports = {
     }
 };
 ```
+
+### Finalização
+
+Agora podemos desfazer todas as migrations e seeders e refazê-las:
+
+ `npx sequelize-cli db:seed:undo:all`
+
+ `npx sequelize-cli db:migrate:undo:all`
+
+ `npx sequelize-cli db:migrate`
+
+ `npx sequelize-cli db:seed:all`
+
+Vale ainda checarmos via Workbench nossas tabelas, registros e execurar o `Reverse Engineering` para confirmarmos se os relacionamentos estão corretos.
+
+O resultado do `SELECT * FROM ...` é algo como:
+
+**users**
+
+| id | firstName | lastName | email | createdAt | updatedAt |
+| -- | --------- | -------- | ----- | --------- | --------- |
+| 1 |	Fulano	| de Tal |	fulano@detal.com |	2021-11-02 20:09:28 |	2021-11-02 20:09:28 |
+| 2 |	Ciclano	| de Tal |	ciclano@detal.com |	2021-11-02 20:09:28 |	2021-11-02 20:09:28 |
+| 3 |	Beltrano	| da Silva |	beltrano@dasilva.com |	2021-11-02 20:09:28 |	2021-11-02 20:09:28 |
+
+**statuses**
+
+| id | title | createdAt | updatedAt |
+| -- | ----- | --------- | --------- |
+| 1  |	01 - A Desenvolver |	2021-11-02 20:09:28	| 2021-11-02 20:09:28 |
+| 2  |	02 - Em Desenvolvimento |	2021-11-02 20:09:28	| 2021-11-02 20:09:28 |
+| 3  |	03 - A Validar |	2021-11-02 20:09:28	| 2021-11-02 20:09:28 |
+| 4  |	04 - Em Validação |	2021-11-02 20:09:28	| 2021-11-02 20:09:28 |
+| 5  |	05 - Validado	| 2021-11-02 20:09:28	| 2021-11-02 20:09:28 |
+| 6  |	06 - A Ajustar |	2021-11-02 20:09:28	| 2021-11-02 20:09:28 |
+| 7  |	07 - Finalizado	| 2021-11-02 20:09:28 |	2021-11-02 20:09:28 |
+
+**todos**
+
+| id | title | excerpt | description | userId | statusId | createdAt | updatedAt |
+| -- | ----- | ------- | ----------- | ------ | -------- | --------- | --------- |
+| 1  |	To Do 01 |	Resumo do To Do 01 |	Descrição completa do To Do 01	| 1	| 1 |	2021-11-02 20:09:28	| 2021-11-02 20:09:28 |
+| 2  |	To Do 02 |	Resumo do To Do 02 |	Descrição completa do To Do 02	| 2	| 2 |	2021-11-02 20:09:28	| 2021-11-02 20:09:28 |
+| 3  |	To Do 03 |	Resumo do To Do 03 |	Descrição completa do To Do 03	| 3	| 3 |	2021-11-02 20:09:28	| 2021-11-02 20:09:28 |
