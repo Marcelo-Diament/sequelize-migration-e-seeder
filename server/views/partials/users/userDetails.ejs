@@ -1,0 +1,23 @@
+<article>
+  <h2><%= user.firstName %> <%= user.lastName %></h2>
+
+  <% if(user.todos) { %>
+    <details>
+      <summary>To Dos</summary>
+      <ul>
+        <% for(todo of user.todos) { %>
+          <li>
+            <h3><%= todo.title %></h3>
+            <p><%= todo.excerpt %></p>
+          </li>
+        <% } %>
+      </ul>
+    </details>
+  <% } %>
+
+  <nav>
+    <a href="mailto:<%= user.email %>" title="Enviar email para <%= user.firstName %>">Enviar email</a>
+    <a href="/todos?userId=<%= user.id %>" title="Ver To Dos de <%= user.firstName %>">To Dos</a>
+  </nav>
+
+</article>
