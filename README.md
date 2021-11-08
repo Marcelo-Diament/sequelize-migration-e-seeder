@@ -815,3 +815,4 @@ O resultado do `SELECT * FROM ...` é algo como:
 | 1  |	To Do 01 |	Resumo do To Do 01 |	Descrição completa do To Do 01	| 1	| 1 |	2021-11-02 20:09:28	| 2021-11-02 20:09:28 |
 | 2  |	To Do 02 |	Resumo do To Do 02 |	Descrição completa do To Do 02	| 2	| 2 |	2021-11-02 20:09:28	| 2021-11-02 20:09:28 |
 | 3  |	To Do 03 |	Resumo do To Do 03 |	Descrição completa do To Do 03	| 3	| 3 |	2021-11-02 20:09:28	| 2021-11-02 20:09:28 |
+
