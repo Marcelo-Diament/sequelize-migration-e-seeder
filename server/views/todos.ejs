@@ -1,4 +1,12 @@
 <%- include('./partials/head.ejs') %>
 <%- include('./partials/header.ejs') %>
-<h1><%= title %></h1>
+
+<section class="shelf todos">
+  <% if(locals.todos) { for(todo of todos) { %>
+  <%- include('./partials/todos/todoDetails') %>
+  <% }} else if (locals.todo) { %>
+  <%- include('./partials/todos/todoDetails') %>
+  <% } %>
+</section>
+
 <%- include('./partials/footer.ejs') %>
