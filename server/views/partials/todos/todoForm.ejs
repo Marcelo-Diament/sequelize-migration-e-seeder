@@ -1,0 +1,94 @@
+<% if(locals.todo) { %>
+  <article>
+    <h2>Editar To Do '<%= todo.title %>'</h2>
+    <p>
+      <% if(new Date(todo.createdAt).toLocaleDateString() === new Date(todo.updatedAt).toLocaleDateString() && new Date(todo.createdAt).toLocaleTimeString() === new Date(todo.updatedAt).toLocaleTimeString()) { %>
+      <b>Criado em:</b> <%= new Date(todo.createdAt).toLocaleDateString() %> às <%= new Date(todo.createdAt).toLocaleTimeString() %>
+      <% } else { %>
+      <b>Atualizado em:</b> <%= new Date(todo.updatedAt).toLocaleDateString() %> às <%= new Date(todo.updatedAt).toLocaleTimeString() %>
+      <% } %>
+    </p>
+    <form action="" method="POST">
+      <div class="form-group">
+        <label for="title">Título</label>
+        <input required type="text" name="title" id="title" value="<%= todo.title %>">
+      </div>
+      <div class="form-group">
+        <label for="excerpt">Resumo</label>
+        <textarea required name="excerpt" id="excerpt" cols="30" rows="10"><%= todo.excerpt %></textarea>
+      </div>
+      <div class="form-group">
+        <label for="description">Descrição</label>
+        <textarea required name="description" id="description" cols="30" rows="10"><%= todo.description %></textarea>
+      </div>
+      <div class="form-group">
+        <label for="userId">Responsável</label>
+        <select required name="userId" id="userId">
+          <% for(let user of users) { %>
+          <% if (user.id === todo.user.id) { %>
+          <option selected value="<%= user.id %>"><%= user.firstName %> <%= user.lastName %></option>
+          <% } else { %>
+          <option value="<%= user.id %>"><%= user.firstName %> <%= user.lastName %></option>
+          <% } %>
+          <% } %>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="statusId">Status</label>
+        <select required name="statusId" id="statusId">
+          <% for(let status of statuses) { %>
+          <% if (status.id === todo.status.id) { %>
+          <option value="<%= status.id %>" selected><%= status.title %></option>
+          <% } else { %>
+          <option value="<%= status.id %>"><%= status.title %></option>
+          <% } %>
+          <% } %>
+        </select>
+      </div>
+      <div class="form-group form-group--btn">
+        <button type="submit" title="Apagar To Do" class="btn btn--danger" form="excludeTodo<%= todo.id %>">Apagar</button>
+        <button type="submit" title="Atualizar To Do" class="btn">Atualizar</button>
+      </div>
+    </form>
+    <form action="./<%= todo.id %>/delete" method="POST" id="excludeTodo<%= todo.id %>"></form>
+  </article>
+  <% } else { %>
+  <article>
+    <h2>Criar novo To Do</h2>
+    <form action="" method="POST">
+      <div class="form-group">
+        <label for="title">Título</label>
+        <input required type="text" name="title" id="title" value="">
+      </div>
+      <div class="form-group">
+        <label for="excerpt">Resumo</label>
+        <textarea required name="excerpt" id="excerpt" cols="30" rows="10"></textarea>
+      </div>
+      <div class="form-group">
+        <label for="description">Descrição</label>
+        <textarea required name="description" id="description" cols="30" rows="10"></textarea>
+      </div>
+      <div class="form-group">
+        <label for="userId">Responsável</label>
+        <select required name="userId" id="userId">
+          <option value="" disabled selected>Selecione um Responsável</option>
+          <% for(let user of users) { %>
+          <option value="<%= user.id %>"><%= user.firstName %> <%= user.lastName %></option>
+          <% } %>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="statusId">Status</label>
+        <select required name="statusId" id="statusId">
+          <option value="" disabled selected>Selecione um Status</option>
+          <% for(let status of statuses) { %>
+          <option value="<%= status.id %>"><%= status.title %></option>
+          <% } %>
+        </select>
+      </div>
+      <div class="form-group form-group--btn">
+        <button type="submit" title="Criar To Do" class="btn">Criar</button>
+      </div>
+    </form>
+  </article>
+  <% } %>
