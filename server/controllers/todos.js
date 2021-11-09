@@ -20,6 +20,11 @@ const controller = {
     }
 
     const todo = await getTodoById(id)
+
+    if (!todo) {
+      res.status(400).send('Ops... não encontramos o seu to do')
+    }
+
     res.render('todos', {
       title: `To Do #${id}`,
       todo
@@ -33,6 +38,10 @@ const controller = {
     }
 
     const todo = await getTodoById(id)
+    if (!todo) {
+      res.status(400).send('Ops... não encontramos o seu to do')
+    }
+
     const statuses = await getAllStatuses()
     const users = await getAllUsers()
 
