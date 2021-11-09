@@ -1,7 +1,11 @@
+const { getAllUsers } = require('../services/users')
+
 const controller = {
-  index: (req, res, next) => {
+  index: async (req, res, next) => {
+    const users = await getAllUsers()
     res.render('users', {
-      title: 'Users'
+      title: 'Users',
+      users
     })
   }
 }
