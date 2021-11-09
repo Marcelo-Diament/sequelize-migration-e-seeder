@@ -1,0 +1,29 @@
+<article>
+
+  <h2><%= todo.title %></h2>
+
+  <p><b>Responsável:</b> <%= todo.user.firstName %></p>
+
+  <% if(todo.createdAt === todo.updatedAt) { %>
+  <p><b>Criado em:</b> <%= new Date(todo.createdAt).toLocaleDateString() %> às <%= new Date(todo.createdAt).toLocaleTimeString() %></p>
+  <% } else { %>
+  <p><b>Atualizado em:</b> <%= new Date(todo.updatedAt).toLocaleDateString() %> às <%= new Date(todo.updatedAt).toLocaleTimeString() %></p>
+  <% } %>
+
+  <p><b>Status:</b> <%= todo.status.title %></p>
+
+  <p><b>Resumo:</b> <%= todo.excerpt %></p>
+
+  <details>
+    <summary>Descrição Completa</summary>
+    <p><%= todo.description %></p>
+  </details>
+
+  <nav>
+    <a href="/todos/<%= todo.id %>" title="Visualizar To Do" class="btn">Visualizar</a>
+    <a href="/todos/<%= todo.id %>/edit" title="Atualizar To Do" class="btn btn--warning">Atualizar</a>
+    <button type="submit" title="Apagar To Do" class="btn btn--danger" form="excludeTodo<%= todo.id %>">Apagar</button>
+  </nav>
+
+  <form class="hidden" action="/todos/<%= todo.id %>/delete" method="POST" id="excludeTodo<%= todo.id %>"></form>
+</article>
